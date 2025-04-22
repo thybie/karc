@@ -1,0 +1,97 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f4f4;
+}
+
+/* 타이틀 줄 */
+.site-title-bar {
+  background-color: #000;
+  padding: 20px 0;
+  text-align: center;
+  border-bottom: 1px solid #000;  /* 메뉴줄과 자연스럽게 연결되게 */
+}
+
+.site-title {
+  margin: 0;
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* 메뉴 바 */
+.nav-bar {
+  background-color: #000;   /* 메뉴 바도 검정 */
+  box-shadow: none;         /* 가로줄 제거 */
+}
+
+.main-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  background-color: #000;   /* 검정 배경 */
+}
+
+.main-menu > li {
+  position: relative;
+}
+
+.main-menu > li > a {
+  color: white;
+  padding: 16px 20px;
+  display: block;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.main-menu > li > a:hover {
+  background-color: #222;  /* 마우스 오버시 진한 회색 */
+}
+
+/* 서브메뉴 */
+.submenu {
+  color: white;
+  list-style: none;      /* ✅ 불릿 제거 */
+  margin: 0;
+  padding: 4px 0;
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #000;
+  z-index: 1000;
+  box-shadow: none;
+}
+
+.submenu li {
+  color: white;
+  list-style: none;      /* ✅ 혹시 몰라 li도 추가 */
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+}
+
+
+.submenu li a:hover {
+  background-color: #222;
+}
+
+
+/* 하위 메뉴 표시 */
+.has-sub:hover > .submenu {
+  display: block;
+}
+
+/* 메뉴 동작 관련 */
+.menu-link {
+  cursor: pointer;
+}
+
+.no-link {
+  pointer-events: none;
+  color: #ccc;
+  cursor: default;
+}

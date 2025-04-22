@@ -1,0 +1,39 @@
+<ul class="main-menu">
+  <% menuItems.filter(item => item.p_menu_id === 'ROOT').forEach(top => {
+       const topChildren = menuItems.filter(sub => sub.p_menu_id === top.menu_id);
+  %>
+    <li class="<%= topChildren.length ? 'has-sub' : '' %>">
+      <% if (topChildren.length > 0) { %>
+        <a href="#" class="no-link"><%= top.menu_nm %></a>
+      <% } else { %>
+        <a href="#" class="menu-link" data-url="<%= top.url %>"><%= top.menu_nm %></a>
+      <% } %>
+
+      <% if (topChildren.length > 0) { %>
+        <ul class="submenu">
+          <% topChildren.forEach(mid => {
+               const midChildren = menuItems.filter(sub => sub.p_menu_id === mid.menu_id);
+          %>
+            <li class="<%= midChildren.length ? 'has-sub' : '' %>">
+              <% if (midChildren.length > 0) { %>
+                <a href="#" class="no-link"><%= mid.menu_nm %></a>
+              <% } else { %>
+                <a href="#" class="menu-link" data-url="<%= mid.url %>"><%= mid.menu_nm %></a>
+              <% } %>
+
+              <% if (midChildren.length > 0) { %>
+                <ul class="submenu">
+                  <% midChildren.forEach(bottom => { %>
+                    <li>
+                      <a href="#" class="menu-link" data-url="<%= bottom.url %>"><%= bottom.menu_nm %></a>
+                    </li>
+                  <% }) %>
+                </ul>
+              <% } %>
+            </li>
+          <% }) %>
+        </ul>
+      <% } %>
+    </li>
+  <% }) %>
+</ul>

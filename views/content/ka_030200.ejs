@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>건크통계</title>
+  <link rel="stylesheet" href="/styles/board.css">
+</head>
+<body>
+  <div class="board-container">
+    <h1 class="board-title">📋 대회기록순위(연도별)</h1>
+    <a class="btn" href="/">돌아가기</a>
+
+    <form method="get" action="/content/ka_030200" class="year-form">
+      <label for="year">연도:</label>
+      <input type="number" name="year" id="year" value="<%= selectedYear %>" placeholder="예: 2025" />
+      <button type="submit">검색</button>
+    </form>
+
+    <table class="board-table">
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>회원명</th>
+          <th>대회명</th>
+          <th>대회일자</th>
+          <th>기록</th>
+          <th>신기록여부</th>
+          <th>첫풀여부</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (stats.length === 0) { %>
+          <tr>
+            <td colspan="4">해당 연도의 회원이 없습니다.</td>
+          </tr>
+        <% } else { %>
+          <% stats.forEach((stat, idx) => { %>
+            <tr>
+              <td><%= idx + 1 %></td> <!-- 번호 붙이기 -->              
+              <td><%= stat.user_nm %></td>
+              <td><%= stat.race_nm %></td>
+              <td><%= stat.race_date.toISOString().slice(0,10) %></td>
+              <td><%= stat.best_record %></td>
+              <td><%= stat.new_record_yn %></td>
+              <td><%= stat.first_yn %></td>
+            </tr>
+          <% }) %>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="javascripts/script.js"></script>
+</body>
+</html>

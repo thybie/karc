@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>건크대회정보</title>
+  <link rel="stylesheet" href="/styles/board.css">
+</head>
+<body>
+  <div class="board-container">
+    <h1 class="board-title">📋 대회(연도별)</h1>
+    <a class="btn" href="/">돌아가기</a>
+
+    <form method="get" action="/content/ka_020100" class="year-form">
+      <label for="year">연도:</label>
+      <input type="number" name="year" id="year" value="<%= selectedYear %>" placeholder="예: 2025" />
+      <button type="submit">검색</button>
+    </form>
+
+    <table class="board-table">
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>대회명</th>
+          <th>대회종류</th>
+          <th>부가정보</th>          
+          <th>대회일자</th>
+          <th>대회장소</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (races.length === 0) { %>
+          <tr>
+            <td colspan="4">해당 연도의 대회가 없습니다.</td>
+          </tr>
+        <% } else { %>
+          <% races.forEach((race, idx) => { %>
+            <tr>
+              <td><%= idx + 1 %></td> <!-- 번호 붙이기 --> 
+              <td><%= race.race_nm %></td>
+              <td><%= race.race_type_nm %></td>
+              <td><%= race.additional_info %></td>
+              <td><%= race.race_date.toISOString().slice(0,10) %></td>
+              <td><%= race.race_place %></td>
+            </tr>
+          <% }) %>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="javascripts/script.js"></script>
+</body>
+</html>

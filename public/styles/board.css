@@ -1,0 +1,73 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+.board-container {
+  width: 80%;
+  margin: 40px auto;
+  background: #fff;
+  padding: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+.board-title {
+  font-size: 2.5rem;
+  text-align: center;
+  color: #4A90E2;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.board-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+
+.board-table th,
+.board-table td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: center;
+}
+
+.board-table th {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+.board-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.year-form {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.year-form input[type="number"] {
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-right: 8px;
+}
+
+.year-form button {
+  padding: 8px 16px;
+  background-color: #4A90E2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.year-form button:hover {
+  background-color: #357ABD;
+}

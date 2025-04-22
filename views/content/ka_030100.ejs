@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>건크통계</title>
+  <link rel="stylesheet" href="/styles/board.css">
+</head>
+<body>
+  <div class="board-container">
+    <h1 class="board-title">📋 출석순위(연도별)</h1>
+    <a class="btn" href="/">돌아가기</a>
+
+    <form method="get" action="/content/ka_0301000" class="year-form">
+      <label for="year">연도:</label>
+      <input type="number" name="year" id="year" value="<%= selectedYear %>" placeholder="예: 2025" />
+      <button type="submit">검색</button>
+    </form>
+
+    <table class="board-table">
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>회원명</th>
+          <th>출석횟수</th>
+          <th>총훈련일수</th>
+          <th>출석률</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (stats.length === 0) { %>
+          <tr>
+            <td colspan="4">해당 연도의 회원이 없습니다.</td>
+          </tr>
+        <% } else { %>
+          <% stats.forEach((stat, idx) => { %>
+            <tr>
+              <td><%= idx + 1 %></td> <!-- 번호 붙이기 -->              
+              <td><%= stat.user_nm %></td>
+              <td><%= stat.cnt %></td>
+              <td><%= stat.total_cnt %></td>
+              <td><%= stat.attend_rate %></td>
+            </tr>
+          <% }) %>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="javascripts/script.js"></script>
+</body>
+</html>
